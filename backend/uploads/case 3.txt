@@ -1,0 +1,9 @@
+FIR ID: DL-3311
+Date: 05 January 2024
+Location: Delhi
+
+Online fraud reported involving fake KYC update messages.
+
+Suspect Phone: 9123456789
+Crime Type: Cyber Fraud
+Email: fraud.alert@fakebank.com

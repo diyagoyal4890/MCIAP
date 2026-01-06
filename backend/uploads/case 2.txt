@@ -1,0 +1,11 @@
+FIR ID: MH-2098
+Date: 18 July 2023
+Location: Mumbai, Maharashtra
+
+Victim reported robbery at ATM late night.
+
+Suspect Phone: 9812345678
+Crime Type: Robbery
+Email: suspect1@gmail.com
+ip : 10.78.10.10
+Vehicle Number: MH12 XY 8899

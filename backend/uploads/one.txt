@@ -1,0 +1,3 @@
+case_delhi.txt
+Crime reported in Delhi.
+Phone number involved: 9998887776.

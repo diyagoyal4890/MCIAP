@@ -1,0 +1,11 @@
+FIR ID: RJ-1023
+Date: 12 March 2023
+Location: Jaipur, Rajasthan
+
+Complaint received regarding mobile phone theft near railway station.
+
+Suspect Phone: 9812345678
+Crime Type: Theft
+Email: suspect1@gmail.com
+Vehicle :- RJ8CAF900
+IP :- 10.10.10.11

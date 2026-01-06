@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCIAP – Crime Intelligence Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fb;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        .half {
+            flex: 1;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        .alert-red {
+            background: #ffe6e6;
+            border-left: 6px solid #e74c3c;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .alert-yellow {
+            background: #fff3cd;
+            border-left: 6px solid #f1c40f;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f2f2f2;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #fff;
+            display: inline-block;
+        }
+
+        .badge-crime {
+            background: #1e88e5;
+        }
+
+        .badge-strategy {
+            background: #00acc1;
+        }
+
+        .charts {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .charts img {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>MCIAP – Crime Intelligence Dashboard</h1>
+
+<!-- Uploaded Files -->
+<div class="card">
+    <h3>Uploaded File Names</h3>
+    <ul>
+        {% for f in files %}
+            <li>{{ f }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Repeated + Languages -->
+<div class="flex">
+    <div class="card half">
+        <h3 style="color:#c0392b;">Repeated Identifiers (Alerts)</h3>
+
+        <strong>Repeated Phone Numbers:</strong>
+        <ul>
+            {% if repeated_phones %}
+                {% for p in repeated_phones %}
+                    <li>{{ p }}</li>
+                {% endfor %}
+            {% else %}
+                <li>None</li>
+            {% endif %}
+        </ul>
+
+        <strong>Repeated Vehicle Numbers:</strong>
+        <ul>
+            {% if repeated_vehicles %}
+                {% for v in repeated_vehicles %}
+                    <li>{{ v }}</li>
+                {% endfor %}
+            {% else %}
+                <li>None</li>
+            {% endif %}
+        </ul>
+
+        <strong>Repeated IP Addresses:</strong>
+        <ul>
+            {% if repeated_ips %}
+                {% for ip in repeated_ips %}
+                    <li>{{ ip }}</li>
+                {% endfor %}
+            {% else %}
+                <li>None</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="card half">
+        <h3>Detected Languages</h3>
+        <ul>
+            {% for l in languages %}
+                <li>{{ l }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- Intelligence Table -->
+<div class="card">
+    <h3>Extracted Intelligence (Per File)</h3>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>File</th>
+            <th>State</th>
+            <th>Phone</th>
+            <th>Vehicle</th>
+            <th>IP</th>
+            <th>Crime Type</th>
+            <th>Strategy</th>
+        </tr>
+
+        {% for r in records %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ r.file }}</td>
+            <td>{{ r.state }}</td>
+            <td>{{ r.phone }}</td>
+            <td>{{ r.vehicle }}</td>
+            <td>{{ r.ip }}</td>
+            <td><span class="badge badge-crime">{{ r.crime }}</span></td>
+            <td><span class="badge badge-strategy">{{ r.strategy }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- Cross-State Strategy Alerts -->
+<div class="card">
+    <h3>Cross-State Strategy Patterns</h3>
+
+    {% for alert in strategy_alerts %}
+
+        {% if alert.type == "cross_state" %}
+        <div class="alert-red">
+            <strong>{{ alert.strategy }}</strong> detected across multiple states:
+            <ul>
+                {% for st, fls in alert.states.items() %}
+                    {% for f in fls %}
+                        <li>{{ st }} → {{ f }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if alert.type == "missing_state" %}
+        <div class="alert-yellow">
+            <strong>{{ alert.strategy }}</strong> detected but state not defined in:
+            <ul>
+                {% for f in alert.files %}
+                    <li>{{ f }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+<!-- Charts -->
+<div class="card">
+    <h3>Crime Analytics & Visual Insights</h3>
+
+    <div class="charts">
+        <div>
+            <img src="/static/charts/crime_pie.png" alt="Crime Pie Chart">
+        </div>
+        <div>
+            <img src="/static/charts/state_bar.png" alt="State Bar Chart">
+        </div>
+        <div>
+            <img src="/static/charts/repeat_phone.png" alt="Repeated Phone Chart">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

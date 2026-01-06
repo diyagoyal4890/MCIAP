@@ -1,0 +1,14 @@
+FIR ID: MH-205
+Date: 18 March 2024
+State: Maharashtra
+Location: Mumbai
+
+Crime Type: Cyber Fraud
+
+Victim received a call saying he has won a gift.
+Courier company asked to share OTP for delivery.
+OTP was shared and money was deducted
+
+Phone Number: 9812345678
+Vehicle Number: RJ14 AB 1234
+IP Address: 192.168.1.10

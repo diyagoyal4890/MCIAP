@@ -1,0 +1,12 @@
+FIR Report
+
+State: Delhi
+
+Complainant received a phone call claiming he won a lottery prize.
+Caller asked for OTP to process the gift.
+
+Phone Number: 9123456789
+Vehicle Number: DL01 AB 1234
+IP Address: 10.10.10.10
+
+This is a clear case of Fake Gift and OTP Scam.

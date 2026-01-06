@@ -1,0 +1,2 @@
+description,phone,email,ip,vehicle,city
+"Instant loan app fraud where victim was harassed and blackmailed",9988776655,loanapp@fraudmail.com,10.10.10.10,DL8CAF9999,Delhi

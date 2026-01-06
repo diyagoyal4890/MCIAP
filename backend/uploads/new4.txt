@@ -1,0 +1,10 @@
+FIR Report
+
+Caller promised prize money but state details were not mentioned.
+OTP and bank details were requested.
+
+Phone Number: 9876543210
+Vehicle Number: UP16 XY 7788
+IP Address: 192.168.0.25
+
+Fake Gift Scam suspected.
